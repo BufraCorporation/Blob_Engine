@@ -23,6 +23,7 @@ public class MainRenderer implements Renderer, SensorEventListener {
     static float red = 0.8f, green = 0.0f,  blue = 0.0f, alpha = 1.0f;
 
     Triangle triangle;
+    Rectangle rectangle;
     Rectangle[] rectangles;
     MainFigure mainChar;
 
@@ -40,7 +41,8 @@ public class MainRenderer implements Renderer, SensorEventListener {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        mainChar = new MainFigure(0.5f, 0.5f, -0.5f, -0.5f) ;
+
+        mainChar = new MainFigure(0.1f, 0.1f, -0.1f, -0.1f) ;
     }
 
     @Override
@@ -60,9 +62,11 @@ public class MainRenderer implements Renderer, SensorEventListener {
         GLES20.glClearColor(red, green, blue, alpha);
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
+
+        mainChar.draw(true);
         mainChar.setValues(rectangles, 0.001f*Ax, 0.001f*Ay);
 
-       mainChar.draw();
+
     }
 
     @Override
