@@ -20,10 +20,7 @@ import javax.microedition.khronos.opengles.GL10;
  */
 public class MainRenderer implements Renderer, SensorEventListener {
 
-   static  boolean show_triangle = false;
-    public static void setTriangle(boolean set_Triangle){
-        show_triangle = set_Triangle;
-    }
+    static float red = 0.8f, green = 0.0f,  blue = 0.0f, alpha = 1.0f;
 
     Triangle triangle;
     Rectangle[] rectangles;
@@ -51,9 +48,16 @@ public class MainRenderer implements Renderer, SensorEventListener {
 
     }
 
+    public void setColor(float red, float green, float blue, float alpha){
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+        this.alpha = alpha;
+    }
+
     @Override
     public void onDrawFrame(GL10 gl) {
-        GLES20.glClearColor(0.8f, 0.0f, 0.0f, 1.0f);
+        GLES20.glClearColor(red, green, blue, alpha);
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
         mainChar.setValues(rectangles, 0.001f*Ax, 0.001f*Ay);

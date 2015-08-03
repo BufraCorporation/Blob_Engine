@@ -13,18 +13,20 @@
 
     <PreferenceCategory android:title="@string/pref_cat_spiel">
         <SwitchPreference
+            android:key="@string/preference_switchbox_key"
             android:title="@string/preference_switchbox_title"
             android:defaultValue="true"/>
 
         <ListPreference
-            android:title="@string/preference_list_title"
+            android:title="@string/preference_color_title"
+            android:key="@string/preference_color_key"
             android:entries="@array/listentries"
             android:entryValues="@array/listentryValues"
-            android:defaultValue="4"/>
+            android:defaultValue="1"/>
 
         <ListPreference
-            android:key="@string/preference_figurlist_key"
-            android:title="@string/preference_art_title"
+            android:key="@string/preference_figure_key"
+            android:title="@string/preference_figure_title"
             android:entries="@array/artlistentries"
             android:entryValues="@array/artlistentryValues"
             android:defaultValue="1"/>

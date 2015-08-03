@@ -26,7 +26,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 
     //Create Surface, Renderer and Manager
     private MainSurfaceView mGLView;
-    private MainRenderer mGLViewRenderer = new MainRenderer();
+    private static MainRenderer mGLViewRenderer = new MainRenderer();
     private ActivityManager mainManager;
 
     /*Sensor Manager*/
@@ -39,6 +39,10 @@ public class MainActivity extends Activity implements SensorEventListener{
     Toast toast;
     Toast toast_wave;
     int duration = Toast.LENGTH_SHORT;
+
+    static public MainRenderer getRenderer(){
+        return mGLViewRenderer;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState ){
@@ -60,11 +64,6 @@ public class MainActivity extends Activity implements SensorEventListener{
         boolean supportES2 = (info.reqGlEsVersion >= 0x20000);
 
         if(supportES2){
-            //Einen Toast aussprechen -> sehr geil!
-            toast = Toast.makeText(context, "DEVICE SUPPORTS OPENGL", duration);
-            toast.show();
-
-
             mGLView = new MainSurfaceView(this);
             mGLView.setEGLContextClientVersion(2);
             mGLView.setRenderer(mGLViewRenderer);

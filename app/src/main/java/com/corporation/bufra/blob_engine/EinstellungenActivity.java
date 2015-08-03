@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import com.corporation.bufra.blob_engine.OpenGL.MainRenderer;
+import com.corporation.bufra.blob_engine.OpenGL.shapes.Triangle;
 
 /**
  * Created by Clemens on 01.08.2015.
@@ -18,29 +19,32 @@ public class EinstellungenActivity extends PreferenceActivity implements Prefere
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        //Unnoetiges Toast fuer Marcs Kompetenz aussprechen:
-        Toast.makeText(this, R.string.einstellungen_geoeffnet, Toast.LENGTH_SHORT).show();
-
-        //Noch ein unnoetigen Kommentar für den Herrn Marc!!!!!
         addPreferencesFromResource(R.xml.preferences);
 
-        Preference figurPref = findPreference(getString(R.string.preference_figurlist_key));
-        figurPref.setOnPreferenceChangeListener(this);
-
-        Preference namePref = findPreference(getString(R.string.preference_name_key));
-        figurPref.setOnPreferenceChangeListener(this);
+        Preference colorPref = findPreference(getString(R.string.preference_color_key));
+        colorPref.setOnPreferenceChangeListener(this);
 
         //SharedPreferences ändern
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String preferenceString = sharedPrefs.getString(figurPref.getKey(), "");
-        onPreferenceChange(figurPref, preferenceString);
-        System.out.println(preferenceString);
+        String preferenceString = sharedPrefs.getString(colorPref.getKey(), "");
+        onPreferenceChange(colorPref, preferenceString);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object value){
-        if (Integer.valueOf((String)value) == 1){
-            MainRenderer.setTriangle(true);
+        switch (Integer.valueOf(value.toString())){
+            case 1:
+                MainActivity.getRenderer().setColor(0.8f, 0.0f, 0.0f, 1.0f);
+                break;
+            case 2:
+                MainActivity.getRenderer().setColor(0.0f, 1.0f, 0.0f, 1.0f);
+                break;
+            case 3:
+                MainActivity.getRenderer().setColor(0.0f, 0.0f, 1.0f, 1.0f);
+                break;
+            case 4:
+                MainActivity.getRenderer().setColor(0.70f, 0.33f, 0.0f, 1.0f);
+                break;
         }
 
         return true;
