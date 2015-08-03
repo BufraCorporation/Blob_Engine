@@ -3,6 +3,7 @@ package com.corporation.bufra.blob_engine;
 /**
  * Created by Clemens on 29.07.2015.
  */
+ //
 public class MainCharacter {
     float SPx, SPy; //Screenposition:
     float Px, Py;     //Real Position
