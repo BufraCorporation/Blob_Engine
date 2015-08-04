@@ -24,7 +24,8 @@ public class EinstellungenActivity extends PreferenceActivity implements Prefere
         Preference colorPref = findPreference(getString(R.string.preference_color_key));
         colorPref.setOnPreferenceChangeListener(this);
 
-        //SharedPreferences ändern
+        //SharedPreferences
+
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String preferenceString = sharedPrefs.getString(colorPref.getKey(), "");
         onPreferenceChange(colorPref, preferenceString);

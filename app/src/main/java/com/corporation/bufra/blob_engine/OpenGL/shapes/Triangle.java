@@ -115,6 +115,15 @@ public class Triangle extends Shape {
         vertexBuffer.position(0);
 
     }
+
+    public void setValues(){
+        ByteBuffer bb = ByteBuffer.allocateDirect(verticles.length * 4);
+        bb.order(ByteOrder.nativeOrder());
+
+        vertexBuffer = bb.asFloatBuffer();
+        vertexBuffer.put(verticles);
+        vertexBuffer.position(0);
+    }
     public void outOfBounds(){
         return;
     }

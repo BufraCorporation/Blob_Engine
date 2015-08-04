@@ -59,4 +59,8 @@ public class Rectangle extends Shape {
         verticles[1] -= y2;
         verticles[4] -= y2;
     }
+    public void setValues() {
+        mainTriangle.setValues();
+        helpTriangle.setValues();
+    }
 }

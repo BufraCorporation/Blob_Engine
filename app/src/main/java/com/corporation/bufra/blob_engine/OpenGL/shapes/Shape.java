@@ -7,4 +7,5 @@ public abstract class Shape {
     float verticles[];
 
     public abstract void setValues(float x2, float y2);
+    public abstract void setValues();
 }

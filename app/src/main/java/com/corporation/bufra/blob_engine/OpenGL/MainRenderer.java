@@ -23,8 +23,10 @@ public class MainRenderer implements Renderer, SensorEventListener {
     static float red = 0.8f, green = 0.0f,  blue = 0.0f, alpha = 1.0f;
 
     Triangle triangle;
-    Rectangle rectangle;
-    Rectangle[] rectangles;
+    //Rectangle rectangleNull;
+   //Rectangle rectangles[] = {rectangleNull};
+    Rectangle rectangleNull, rectangleOne, rectangleTwo, rectangleThree, rectangleFour, rectangleFive, rectangleSix, rectangleSeven, rectangleEight, rectangleNine, rectangleTen, rectangleEleven, rectangleTwelve, rectangleThirteen, rectangleFourteen;
+    Rectangle rectangles[] = {rectangleNull, rectangleOne, rectangleTwo, rectangleThree, rectangleFour, rectangleFive, rectangleSix, rectangleSeven, rectangleEight, rectangleNine, rectangleTen, rectangleEleven, rectangleTwelve, rectangleThirteen, rectangleFourteen};
     MainFigure mainChar;
 
     private float Ax = 0;
@@ -42,7 +44,81 @@ public class MainRenderer implements Renderer, SensorEventListener {
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 
-        mainChar = new MainFigure(0.1f, 0.1f, -0.1f, -0.1f) ;
+        mainChar = new MainFigure(0.1f, 0.05f, -0.1f, -0.05f);
+
+        float x1,x2;
+
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleNull = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleOne = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleTwo = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleThree = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleFour = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleFive = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleSix = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleSeven = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleEight = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleNine = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleTen = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleEleven = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleTwelve = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleThirteen = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        x1 = randomFull();
+        x2 = randomFull();
+        rectangleFourteen = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+
+        rectangles[0] = rectangleNull;
+        rectangles[1] = rectangleOne;
+        rectangles[2] = rectangleTwo;
+        rectangles[3] = rectangleThree;
+        rectangles[4] = rectangleFour;
+        rectangles[5] = rectangleFive;
+        rectangles[6] = rectangleSix;
+        rectangles[7] = rectangleSeven;
+        rectangles[8] = rectangleEight;
+        rectangles[9] = rectangleNine;
+        rectangles[10] = rectangleTen;
+        rectangles[11] = rectangleEleven;
+        rectangles[12] = rectangleTwelve;
+        rectangles[13] = rectangleThirteen;
+        rectangles[14] = rectangleFourteen;
+
+
+    }
+
+    private float randomFull(){
+        return ((float)(Math.random()*2 - 1));
+    }
+
+    private float randomFullDistance(){
+        return ((float)(Math.random()/10 ));
     }
 
     @Override
@@ -64,8 +140,24 @@ public class MainRenderer implements Renderer, SensorEventListener {
 
 
         mainChar.draw(true);
-        mainChar.setValues(rectangles, 0.001f*Ax, 0.001f*Ay);
+        for (Rectangle r : rectangles) {
+            r.draw(true);
 
+        }
+
+        mainChar.setValues(rectangles, 0.001f * Ax, 0.001f * Ay);
+
+        mainChar.draw(true);
+        for (Rectangle r : rectangles) {
+            r.setValues();
+    }
+        //rectangleNull.draw(true);
+        //rectangleOne.draw(true);
+        //rectangleTwo.draw(true);
+
+        // rectangleNull.setValues();
+        //rectangleOne.setValues();
+        // rectangleTwo.setValues();
 
     }
 
