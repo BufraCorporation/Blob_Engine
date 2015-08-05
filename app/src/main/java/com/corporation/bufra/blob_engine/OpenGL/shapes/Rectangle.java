@@ -10,6 +10,9 @@ public class Rectangle extends Shape {
              0.0f,  0.0f, 0.0f,  //upper right corner
              0.0f,  0.0f, 0.0f  //downer left corner
     };
+    public float screenCoordinates[] = {
+            0.0f, 0.0f
+    };
 
     public Rectangle(){
            mainTriangle = new Triangle(verticles[3], verticles[4], verticles[3], verticles[1], verticles[0], verticles [4]);
@@ -36,6 +39,9 @@ public class Rectangle extends Shape {
             verticles[1] = y2;
             verticles[4] = x2;
         }
+        screenCoordinates[0] = verticles[0];
+        screenCoordinates[1] = verticles[1];
+
         createTriangles();
     }
 
