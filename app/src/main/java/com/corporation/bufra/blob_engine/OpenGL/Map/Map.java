@@ -1,7 +1,8 @@
 package com.corporation.bufra.blob_engine.OpenGL.Map;
 
+import com.corporation.bufra.blob_engine.Global.BlobConstants;
 import com.corporation.bufra.blob_engine.OpenGL.shapes.Rectangle;
-
+import com.corporation.bufra.blob_engine.OpenGL.Map.Elements.Shares;
 /**
  * Created by Marc on 05.08.2015.
  */
@@ -10,8 +11,9 @@ public class Map {
     Rectangle rectangleNull, rectangleOne, rectangleTwo, rectangleThree, rectangleFour, rectangleFive, rectangleSix, rectangleSeven, rectangleEight, rectangleNine, rectangleTen, rectangleEleven, rectangleTwelve, rectangleThirteen, rectangleFourteen;
 
 
-    Rectangle rectangles[] = {rectangleNull, rectangleOne, rectangleTwo, rectangleThree, rectangleFour, rectangleFive, rectangleSix, rectangleSeven, rectangleEight, rectangleNine, rectangleTen, rectangleEleven, rectangleTwelve, rectangleThirteen, rectangleFourteen};
+    Rectangle rectangles[] = new Rectangle[15];
 
+    Shares shares[][] = new Shares[((int)(BlobConstants.MAP_HEIGHT/BlobConstants.SHARE_HEIGHT))][((int)(BlobConstants.MAP_LENGTH/BlobConstants.SHARE_LENGTH))];
 
     public float mapDimension[] = {
             0.0f,   0.0f,
@@ -22,68 +24,11 @@ public class Map {
     public Map() {
         float x1,x2;
 
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleNull = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleOne = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleTwo = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleThree = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleFour = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleFive = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleSix = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleSeven = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleEight = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleNine = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleTen = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleEleven = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleTwelve = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleThirteen = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-        x1 = randomFull();
-        x2 = randomFull();
-        rectangleFourteen = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
-
-        rectangles[0] = rectangleNull;
-        rectangles[1] = rectangleOne;
-        rectangles[2] = rectangleTwo;
-        rectangles[3] = rectangleThree;
-        rectangles[4] = rectangleFour;
-        rectangles[5] = rectangleFive;
-        rectangles[6] = rectangleSix;
-        rectangles[7] = rectangleSeven;
-        rectangles[8] = rectangleEight;
-        rectangles[9] = rectangleNine;
-        rectangles[10] = rectangleTen;
-        rectangles[11] = rectangleEleven;
-        rectangles[12] = rectangleTwelve;
-        rectangles[13] = rectangleThirteen;
-        rectangles[14] = rectangleFourteen;
-
+        for (int i=0; i<15; i++) {
+            x1 = randomFull();
+            x2 = randomFull();
+            rectangles[i] = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
+        }
     }
 
     private float randomFull(){
