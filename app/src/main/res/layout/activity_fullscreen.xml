@@ -11,6 +11,12 @@
         android:textStyle="bold" android:textSize="50sp" android:gravity="center"
         android:text="@string/dummy_content" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Einstellungen"
+            android:id="@+id/button2"
+            android:layout_gravity="right|top" />
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
     <FrameLayout android:layout_width="match_parent" android:layout_height="610dp"
@@ -25,19 +31,13 @@
 
         </LinearLayout>
 
-        Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Engine starten."
-            android:id="@+id/button1"
-            android:layout_gravity="center_horizontal|bottom" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="OGL starten"
             android:id="@+id/button"
             android:layout_gravity="center_horizontal|bottom" />
+
     </FrameLayout>
 
 </FrameLayout>

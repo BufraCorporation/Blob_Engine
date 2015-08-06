@@ -25,11 +25,11 @@
             android:defaultValue="1"/>
 
         <ListPreference
-            android:key="@string/preference_figure_key"
-            android:title="@string/preference_figure_title"
+            android:key="@string/preference_recCol_key"
+            android:title="@string/preference_recCol_title"
             android:entries="@array/artlistentries"
             android:entryValues="@array/artlistentryValues"
-            android:defaultValue="1"/>
+            android:defaultValue="10"/>
 
     </PreferenceCategory>
 </PreferenceScreen>
