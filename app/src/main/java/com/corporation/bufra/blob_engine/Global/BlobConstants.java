@@ -6,7 +6,7 @@ package com.corporation.bufra.blob_engine.Global;
 public abstract class BlobConstants {
     //BORDER TOLERANCE
     public static final float TOLERANCE_VERTICAL = 0.7f;
-    public static final float TOLERANCE_HORICONTAL = 0.7f;
+    public static final float TOLERANCE_HORICONTAL = 0.6f;
 
     //SIZE OF THE MAP
     public static final float MAP_LENGTH = 500f;
