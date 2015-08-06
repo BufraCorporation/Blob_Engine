@@ -1,6 +1,7 @@
 package com.corporation.bufra.blob_engine.OpenGL.shapes.figures;
 
 
+import com.corporation.bufra.blob_engine.Global.BlobConstants;
 import com.corporation.bufra.blob_engine.OpenGL.shapes.Rectangle;
 
 public class MainFigure extends Rectangle {
@@ -66,25 +67,25 @@ public class MainFigure extends Rectangle {
 
         //Check Border collection
         //LEFT
-        if (super.verticles[0] - x2 < 1f) {
+        if (super.verticles[0] - x2 < BlobConstants.TOLERANCE_HORICONTAL) {
             //tempRet[2] = false;
         } else {
             borderCol[0] = true;
         }
         //RIGHT
-        if (super.verticles[3] - x2 > -1f) {
+        if (super.verticles[3] - x2 > -BlobConstants.TOLERANCE_HORICONTAL) {
             //tempRet[0] = false;
         } else {
             borderCol[2] = true;
         }
         //UP
-        if (super.verticles[1] - y2 < 1f) {
+        if (super.verticles[1] - y2 < BlobConstants.TOLERANCE_VERTICAL) {
             //tempRet[1] = false;
         } else {
             borderCol[1] = true;
         }
         //DOWN
-        if (super.verticles[4] - y2 > -1f) {
+        if (super.verticles[4] - y2 > -BlobConstants.TOLERANCE_VERTICAL) {
             //tempRet[3] = false;
         } else {
             borderCol[3] = true;
