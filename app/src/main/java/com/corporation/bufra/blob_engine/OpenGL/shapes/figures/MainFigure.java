@@ -5,14 +5,17 @@ import com.corporation.bufra.blob_engine.OpenGL.shapes.Rectangle;
 
 public class MainFigure extends Rectangle {
 
-    boolean recCol[] = {false, false, false, false};
-    boolean borderCol[] = {false, false, false, false};
+    //[4-7] are only for overwriting return of setValues
+    boolean recCol[] = {false, false, false, false, false, false, false, false};
+    boolean borderCol[] = {false, false, false, false, false, false, false, false};
+
     boolean tempRet[] = {false, false, false, false};
     float tempUpperleft[] = {0f, 0f, 0f};
     float tempDownerright[] = {0f, 0f, 0f};
 
     boolean CollisionArray[] = {false, false, false, false};
-    boolean BorderArray[]    = {false, false, false, false};
+    // [1 to 3] return border collisions [4 to 7] return every Rectangle collision
+    boolean BorderArray[]    = {false, false, false, false, false, false, false, false};
 
 
 
@@ -32,6 +35,12 @@ public class MainFigure extends Rectangle {
     public boolean[] setValues( Rectangle[] rec, float x2, float y2) {
         CollisionArray = CollisionDetector(rec, x2, y2);
         BorderArray    = BorderCollision(x2, y2);
+
+        BorderArray[4] = false;
+        BorderArray[5] = false;
+        BorderArray[6] = false;
+        BorderArray[7] = false;
+
         //Movement left
         if(x2>0 && !CollisionArray[2] && !BorderArray[2]) {super.setValues(x2, 0);}
         //Movement right
@@ -42,6 +51,10 @@ public class MainFigure extends Rectangle {
         //Movement Down
         if(y2>0 && !CollisionArray[3] && !BorderArray[3]) {super.setValues(0, y2);}
 
+        BorderArray[4] = CollisionArray[0];
+        BorderArray[5] = CollisionArray[1];
+        BorderArray[6] = CollisionArray[2];
+        BorderArray[7] = CollisionArray[3];
         return BorderArray;
     }
 
@@ -106,7 +119,7 @@ public class MainFigure extends Rectangle {
                     recCol[1] = true;
                 //else tempRet[1] = false;
 
-                if( verticles[1] - y2 > r.verticles[4] && verticles[4] - y2 < r.verticles[1] && verticles[3] < r.verticles[0] && verticles[0] > r.verticles[3])
+                if( verticles[1] - y2  > r.verticles[4] && verticles[4] - y2 < r.verticles[1] && verticles[3] < r.verticles[0] && verticles[0] > r.verticles[3])
                     recCol[3] = true;
                 //else tempRet[3] = false;
             }
