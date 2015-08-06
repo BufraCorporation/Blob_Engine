@@ -67,25 +67,25 @@ public class MainFigure extends Rectangle {
 
         //Check Border collection
         //LEFT
-        if (super.verticles[0] - x2 < BlobConstants.TOLERANCE_HORICONTAL) {
+        if (super.verticles[BlobConstants.R_COORDINATE1_X] - x2 < BlobConstants.TOLERANCE_HORICONTAL) {
             //tempRet[2] = false;
         } else {
             borderCol[0] = true;
         }
         //RIGHT
-        if (super.verticles[3] - x2 > -BlobConstants.TOLERANCE_HORICONTAL) {
+        if (super.verticles[BlobConstants.R_COORDINATE2_X] - x2 > -BlobConstants.TOLERANCE_HORICONTAL) {
             //tempRet[0] = false;
         } else {
             borderCol[2] = true;
         }
         //UP
-        if (super.verticles[1] - y2 < BlobConstants.TOLERANCE_VERTICAL) {
+        if (super.verticles[BlobConstants.R_COORDINATE1_Y] - y2 < BlobConstants.TOLERANCE_VERTICAL) {
             //tempRet[1] = false;
         } else {
             borderCol[1] = true;
         }
         //DOWN
-        if (super.verticles[4] - y2 > -BlobConstants.TOLERANCE_VERTICAL) {
+        if (super.verticles[BlobConstants.R_COORDINATE2_Y] - y2 > -BlobConstants.TOLERANCE_VERTICAL) {
             //tempRet[3] = false;
         } else {
             borderCol[3] = true;
@@ -107,20 +107,20 @@ public class MainFigure extends Rectangle {
         //For each Rectangle: Check collision
         if (rec != null) {
             for (Rectangle r : rec) {
-                if( verticles[0] - x2 > r.verticles[3] && verticles[3] - x2 < r.verticles[0] && verticles[4] < r.verticles[1] && verticles[1] > r.verticles[4])
+                if( verticles[BlobConstants.R_COORDINATE1_X] - x2 > r.verticles[BlobConstants.R_COORDINATE2_X] && verticles[BlobConstants.R_COORDINATE2_X] - x2 < r.verticles[BlobConstants.R_COORDINATE1_X] && verticles[BlobConstants.R_COORDINATE2_Y] < r.verticles[BlobConstants.R_COORDINATE1_Y] && verticles[BlobConstants.R_COORDINATE1_Y] > r.verticles[BlobConstants.R_COORDINATE2_Y])
                     recCol[0] = true;
                 //else tempRet[0] = false;
 
 
-                if( verticles[3] - x2 < r.verticles[0] && verticles[0] - x2 > r.verticles[3] && verticles[4] < r.verticles[1] && verticles[1] > r.verticles[4])
+                if( verticles[BlobConstants.R_COORDINATE2_X] - x2 < r.verticles[BlobConstants.R_COORDINATE1_X] && verticles[BlobConstants.R_COORDINATE1_X] - x2 > r.verticles[BlobConstants.R_COORDINATE2_X] && verticles[BlobConstants.R_COORDINATE2_Y] < r.verticles[BlobConstants.R_COORDINATE1_Y] && verticles[BlobConstants.R_COORDINATE1_Y] > r.verticles[BlobConstants.R_COORDINATE2_Y])
                     recCol[2] = true;
                 //else tempRet[2] = false;
 
-                if( verticles[4] - y2 < r.verticles[1] && verticles[1] - y2 > r.verticles[4] && verticles[3] < r.verticles[0] && verticles[0] > r.verticles[3])
+                if( verticles[BlobConstants.R_COORDINATE2_Y] - y2 < r.verticles[BlobConstants.R_COORDINATE1_Y] && verticles[BlobConstants.R_COORDINATE1_Y] - y2 > r.verticles[BlobConstants.R_COORDINATE2_Y] && verticles[BlobConstants.R_COORDINATE2_X] < r.verticles[BlobConstants.R_COORDINATE1_X] && verticles[BlobConstants.R_COORDINATE1_X] > r.verticles[BlobConstants.R_COORDINATE2_X])
                     recCol[1] = true;
                 //else tempRet[1] = false;
 
-                if( verticles[1] - y2  > r.verticles[4] && verticles[4] - y2 < r.verticles[1] && verticles[3] < r.verticles[0] && verticles[0] > r.verticles[3])
+                if( verticles[BlobConstants.R_COORDINATE1_Y] - y2  > r.verticles[BlobConstants.R_COORDINATE2_Y] && verticles[BlobConstants.R_COORDINATE2_Y] - y2 < r.verticles[BlobConstants.R_COORDINATE1_Y] && verticles[BlobConstants.R_COORDINATE2_X] < r.verticles[BlobConstants.R_COORDINATE1_X] && verticles[BlobConstants.R_COORDINATE1_X] > r.verticles[BlobConstants.R_COORDINATE2_X])
                     recCol[3] = true;
                 //else tempRet[3] = false;
             }

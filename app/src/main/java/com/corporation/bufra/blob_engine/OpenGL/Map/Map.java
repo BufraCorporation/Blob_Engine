@@ -11,20 +11,16 @@ public class Map {
     Rectangle rectangleNull, rectangleOne, rectangleTwo, rectangleThree, rectangleFour, rectangleFive, rectangleSix, rectangleSeven, rectangleEight, rectangleNine, rectangleTen, rectangleEleven, rectangleTwelve, rectangleThirteen, rectangleFourteen;
 
 
-    Rectangle rectangles[] = new Rectangle[15];
+    Rectangle rectangles[] = new Rectangle[40];
 
     Shares shares[][] = new Shares[((int)(BlobConstants.MAP_HEIGHT/BlobConstants.SHARE_HEIGHT))][((int)(BlobConstants.MAP_LENGTH/BlobConstants.SHARE_LENGTH))];
+    Shares share;
 
-    public float mapDimension[] = {
-            0.0f,   0.0f,
-          500.0f, 500.0f
-
-    };
 
     public Map() {
         float x1,x2;
 
-        for (int i=0; i<15; i++) {
+        for (int i=0; i<40; i++) {
             x1 = randomFull();
             x2 = randomFull();
             rectangles[i] = new Rectangle(x1, x2, x1+randomFullDistance(), x2+randomFullDistance());
@@ -32,7 +28,7 @@ public class Map {
     }
 
     private float randomFull(){
-        return ((float)(Math.random()*2 - 1));
+        return ((float)(Math.random()*5 - 1));
     }
 
     private float randomFullDistance(){

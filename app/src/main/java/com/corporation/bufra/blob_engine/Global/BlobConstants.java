@@ -15,4 +15,27 @@ public abstract class BlobConstants {
     //LENGTH OF THE SHARES
     public static final float SHARE_LENGTH = 0.5f;
     public static final float SHARE_HEIGHT = 0.5f;
+
+    //Triangle Coordinates
+    public static final int T_COORDINATE1_X = 0;
+    public static final int T_COORDINATE1_Y = 1;
+    public static final int T_COORDINATE1_Z = 2;
+
+    public static final int T_COORDINATE2_X = 3;
+    public static final int T_COORDINATE2_Y = 4;
+    public static final int T_COORDINATE2_Z = 5;
+
+    public static final int T_COORDINATE3_X = 6;
+    public static final int T_COORDINATE3_Y = 7;
+    public static final int T_COORDINATE3_Z = 8;
+
+    //Rectangle Coordinates
+    public static final int R_COORDINATE1_X = 0;
+    public static final int R_COORDINATE1_Y = 1;
+    public static final int R_COORDINATE1_Z = 2;
+
+    public static final int R_COORDINATE2_X = 3;
+    public static final int R_COORDINATE2_Y = 4;
+    public static final int R_COORDINATE2_Z = 5;
+
 }

@@ -13,4 +13,8 @@ public class Shares extends Rectangle {
         super(x1, x2, x1 + BlobConstants.SHARE_HEIGHT, x2 + BlobConstants.SHARE_LENGTH);
     }
 
+    public void draw(boolean screenBorderCollision[], float xVel, float yVel) {
+
+    }
+
 }

@@ -37,7 +37,7 @@ public class MainRenderer implements Renderer, SensorEventListener {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-       screen = new Screen();
+        screen = new Screen();
     }
 
 
@@ -53,7 +53,6 @@ public class MainRenderer implements Renderer, SensorEventListener {
     public void onDrawFrame(GL10 gl) {
         GLES20.glClearColor(red, green, blue, alpha);
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
-
 
         screen.renderScreen(Ax, Ay);
     }

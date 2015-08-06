@@ -2,6 +2,8 @@ package com.corporation.bufra.blob_engine.OpenGL.shapes;
 
 import android.opengl.GLES20;
 
+import com.corporation.bufra.blob_engine.Global.BlobConstants;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -23,7 +25,7 @@ public class Triangle extends Shape {
               0.0f,  0.3f, 0.0f
     };
 
-    static private float color[] = new float[] { 0.0f, 0.5f, 1.0f, 1.0f};
+    static private float color[] = new float[] { 0.0f, 1.0f, 1.0f, 0.5f};
 
     private final String vertexShaderCode =
             "attribute vec4 vPosition;" +
@@ -46,36 +48,21 @@ public class Triangle extends Shape {
     }
 
     public Triangle() {
-        ByteBuffer bb = ByteBuffer.allocateDirect(verticles.length * 4);
-        bb.order(ByteOrder.nativeOrder());
-
-        vertexBuffer = bb.asFloatBuffer();
-        vertexBuffer.put(verticles);
-        vertexBuffer.position(0);
-
-        int vertexShader = loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode);
-        int fragmentShader = loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);
-
-        shaderProgram = GLES20.glCreateProgram();
-        GLES20.glAttachShader(shaderProgram, vertexShader);
-        GLES20.glAttachShader(shaderProgram, fragmentShader);
-        GLES20.glLinkProgram(shaderProgram);
-
-
-
+        renderRectangle();
     }
 
     public Triangle( float x1, float x2, float y1, float y2, float z1, float z2){
         this();
-        verticles[0] =  x1;
-        verticles[1] =  x2;
+        verticles[BlobConstants.T_COORDINATE1_X] =  x1;
+        verticles[BlobConstants.T_COORDINATE1_Y] =  x2;
 
-        verticles[3] =  y1;
-        verticles[4] =  y2;
+        verticles[BlobConstants.T_COORDINATE2_X] =  y1;
+        verticles[BlobConstants.T_COORDINATE2_Y] =  y2;
 
-        verticles[6] =  z1;
-        verticles[7] =  z2;
+        verticles[BlobConstants.T_COORDINATE3_X] =  z1;
+        verticles[BlobConstants.T_COORDINATE3_Y] =  z2;
 
+       renderRectangle();
     }
 
     public void draw(){
@@ -86,45 +73,49 @@ public class Triangle extends Shape {
 
         GLES20.glVertexAttribPointer(positionAttrib, 3, GLES20.GL_FLOAT, false, 0, vertexBuffer);
 
-        int colorUniform = GLES20.glGetUniformLocation(shaderProgram, "Color");
+        int colorUniform = GLES20.glGetUniformLocation(shaderProgram, "vColor");
 
         GLES20.glUniform4fv(colorUniform, 1, color, 0);
         GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, verticles.length / 3);
         GLES20.glDisableVertexAttribArray(positionAttrib);
     }
 
+
     public void setValues( float x2, float y2){
-        //Check if triangle is out of x Bounds
-            verticles[0] -= x2;
-            verticles[3] -= x2;
-            verticles[6] -= x2;
+        //Update x Values
+            verticles[BlobConstants.T_COORDINATE1_X] -= x2;
+            verticles[BlobConstants.T_COORDINATE2_X] -= x2;
+            verticles[BlobConstants.T_COORDINATE3_X] -= x2;
 
-        //Check if triangle is out of y Bounds
+        //Update y Values
+            verticles[BlobConstants.T_COORDINATE1_Y] -= y2;
+            verticles[BlobConstants.T_COORDINATE2_Y] -= y2;
+            verticles[BlobConstants.T_COORDINATE3_Y] -= y2;
 
-            verticles[1] -= y2;
-            verticles[4] -= y2;
-            verticles[7] -= y2;
-
-        //verticles[5] += y2;
-
-        ByteBuffer bb = ByteBuffer.allocateDirect(verticles.length * 4);
-        bb.order(ByteOrder.nativeOrder());
-
-        vertexBuffer = bb.asFloatBuffer();
-        vertexBuffer.put(verticles);
-        vertexBuffer.position(0);
-
+        resizeRectangle();
     }
 
     public void setValues(){
+        resizeRectangle();
+    }
+    public void renderRectangle(){
+        resizeRectangle();
+
+        int vertexShader = loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode);
+        int fragmentShader = loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);
+
+        shaderProgram = GLES20.glCreateProgram();
+        GLES20.glAttachShader(shaderProgram, vertexShader);
+        GLES20.glAttachShader(shaderProgram, fragmentShader);
+        GLES20.glLinkProgram(shaderProgram);
+    }
+
+    public void resizeRectangle(){
         ByteBuffer bb = ByteBuffer.allocateDirect(verticles.length * 4);
         bb.order(ByteOrder.nativeOrder());
 
         vertexBuffer = bb.asFloatBuffer();
         vertexBuffer.put(verticles);
         vertexBuffer.position(0);
-    }
-    public void outOfBounds(){
-        return;
     }
 }

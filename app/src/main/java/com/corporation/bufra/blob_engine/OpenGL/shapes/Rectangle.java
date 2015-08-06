@@ -1,5 +1,7 @@
 package com.corporation.bufra.blob_engine.OpenGL.shapes;
 
+import com.corporation.bufra.blob_engine.Global.BlobConstants;
+
 /**
  * Created by Marc on 02.08.2015.
  */
@@ -10,44 +12,40 @@ public class Rectangle extends Shape {
              0.0f,  0.0f, 0.0f,  //upper right corner
              0.0f,  0.0f, 0.0f  //downer left corner
     };
-    public float screenCoordinates[] = {
-            0.0f, 0.0f
-    };
+
 
     public Rectangle(){
-           mainTriangle = new Triangle(verticles[3], verticles[4], verticles[3], verticles[1], verticles[0], verticles [4]);
-           helpTriangle = new Triangle(verticles[0], verticles[1], verticles[3], verticles[1], verticles[0], verticles [4]);
-        createTriangles();
     }
 
     public Rectangle(float x1, float x2, float y1, float y2) {
 
         if( x1 > y1){
-            verticles[0] = x1;
-            verticles[3] = y1;
+            verticles[BlobConstants.R_COORDINATE1_X] = x1;
+            verticles[BlobConstants.R_COORDINATE2_X] = y1;
         }
         else{
-            verticles[0] = y1;
-            verticles[3] = x1;
+            verticles[BlobConstants.R_COORDINATE1_X] = y1;
+            verticles[BlobConstants.R_COORDINATE2_X] = x1;
         }
 
         if( x2 > y2){
-            verticles[1] = x2;
-            verticles[4] = y2;
+            verticles[BlobConstants.R_COORDINATE1_Y] = x2;
+            verticles[BlobConstants.R_COORDINATE2_Y] = y2;
         }
         else{
-            verticles[1] = y2;
-            verticles[4] = x2;
+            verticles[BlobConstants.R_COORDINATE1_Y] = y2;
+            verticles[BlobConstants.R_COORDINATE2_Y] = x2;
         }
-        screenCoordinates[0] = verticles[0];
-        screenCoordinates[1] = verticles[1];
+     //   screenCoordinates[0] = verticles[BlobConstants.R_COORDINATE1_X];
 
         createTriangles();
     }
 
     private void createTriangles(){
-        mainTriangle = new Triangle(verticles[3], verticles[4], verticles[3], verticles[1], verticles[0], verticles [4]);
-        helpTriangle = new Triangle(verticles[0], verticles[1], verticles[3], verticles[1], verticles[0], verticles [4]);
+        helpTriangle = new Triangle(verticles[BlobConstants.R_COORDINATE1_X], verticles[BlobConstants.R_COORDINATE1_Y], verticles[BlobConstants.R_COORDINATE2_X], verticles[BlobConstants.R_COORDINATE1_Y], verticles[BlobConstants.R_COORDINATE1_X], verticles [BlobConstants.R_COORDINATE2_Y]);
+        mainTriangle = new Triangle(verticles[BlobConstants.R_COORDINATE2_X], verticles[BlobConstants.R_COORDINATE2_Y], verticles[BlobConstants.R_COORDINATE2_X], verticles[BlobConstants.R_COORDINATE1_Y], verticles[BlobConstants.R_COORDINATE1_X], verticles [BlobConstants.R_COORDINATE2_Y]);
+
+
     }
 
     public void draw(boolean showHelp) {
@@ -59,11 +57,11 @@ public class Rectangle extends Shape {
     public void setValues( float x2, float y2){
         mainTriangle.setValues(x2, y2);
        helpTriangle.setValues(x2, y2);
-        verticles[0] -= x2;
-        verticles[3] -= x2;
+        verticles[BlobConstants.R_COORDINATE1_X] -= x2;
+        verticles[BlobConstants.R_COORDINATE2_X] -= x2;
 
-        verticles[1] -= y2;
-        verticles[4] -= y2;
+        verticles[BlobConstants.R_COORDINATE1_Y] -= y2;
+        verticles[BlobConstants.R_COORDINATE2_Y] -= y2;
     }
     public void setValues() {
         mainTriangle.setValues();
