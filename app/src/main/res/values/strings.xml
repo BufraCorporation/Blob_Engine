@@ -25,6 +25,6 @@
     <string name="preference_switchbox_key">switchbox</string>
     <string name="preference_switchbox_title">Profi-Modus</string>
 
-    <string name="preference_figure_key">figurliste</string>
-    <string name="preference_figure_title">Figur wählen</string>
+    <string name="preference_recCol_key">recColListe</string>
+    <string name="preference_recCol_title">Figurfarbe wählen</string>
 </resources>
