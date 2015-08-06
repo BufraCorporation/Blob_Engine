@@ -99,30 +99,29 @@ public class MainFigure extends Rectangle {
     public boolean[] CollisionDetector(Rectangle[] rec, float x2, float y2) {
         //Return array [Coll. right, Coll. up, Coll. left, Coll. down]
         //Set Collision to false
-        recCol[0] = false;
-        recCol[1] = false;
-        recCol[2] = false;
-        recCol[3] = false;
+        for(int i=0;i<4;i++){
+            recCol[i] = false;
+        }
+
 
         //For each Rectangle: Check collision
         if (rec != null) {
             for (Rectangle r : rec) {
+                //Right Border of MainFig collidating with Rectangle?
                 if( verticles[BlobConstants.R_COORDINATE1_X] - x2 > r.verticles[BlobConstants.R_COORDINATE2_X] && verticles[BlobConstants.R_COORDINATE2_X] - x2 < r.verticles[BlobConstants.R_COORDINATE1_X] && verticles[BlobConstants.R_COORDINATE2_Y] < r.verticles[BlobConstants.R_COORDINATE1_Y] && verticles[BlobConstants.R_COORDINATE1_Y] > r.verticles[BlobConstants.R_COORDINATE2_Y])
-                    recCol[0] = true;
-                //else tempRet[0] = false;
-
-
+                {recCol[0] = true; }
+                //Left Border of MainFig collidating with Rectangle?
                 if( verticles[BlobConstants.R_COORDINATE2_X] - x2 < r.verticles[BlobConstants.R_COORDINATE1_X] && verticles[BlobConstants.R_COORDINATE1_X] - x2 > r.verticles[BlobConstants.R_COORDINATE2_X] && verticles[BlobConstants.R_COORDINATE2_Y] < r.verticles[BlobConstants.R_COORDINATE1_Y] && verticles[BlobConstants.R_COORDINATE1_Y] > r.verticles[BlobConstants.R_COORDINATE2_Y])
-                    recCol[2] = true;
-                //else tempRet[2] = false;
+                {recCol[2] = true; }
+                }
 
+            for (Rectangle r : rec) {
+                //Bottom Border of MainFig collidating with Rectangle?
                 if( verticles[BlobConstants.R_COORDINATE2_Y] - y2 < r.verticles[BlobConstants.R_COORDINATE1_Y] && verticles[BlobConstants.R_COORDINATE1_Y] - y2 > r.verticles[BlobConstants.R_COORDINATE2_Y] && verticles[BlobConstants.R_COORDINATE2_X] < r.verticles[BlobConstants.R_COORDINATE1_X] && verticles[BlobConstants.R_COORDINATE1_X] > r.verticles[BlobConstants.R_COORDINATE2_X])
-                    recCol[1] = true;
-                //else tempRet[1] = false;
-
+                {recCol[1] = true; }
+                //Top Border of MainFig collidating with Rectangle?
                 if( verticles[BlobConstants.R_COORDINATE1_Y] - y2  > r.verticles[BlobConstants.R_COORDINATE2_Y] && verticles[BlobConstants.R_COORDINATE2_Y] - y2 < r.verticles[BlobConstants.R_COORDINATE1_Y] && verticles[BlobConstants.R_COORDINATE2_X] < r.verticles[BlobConstants.R_COORDINATE1_X] && verticles[BlobConstants.R_COORDINATE1_X] > r.verticles[BlobConstants.R_COORDINATE2_X])
-                    recCol[3] = true;
-                //else tempRet[3] = false;
+                {recCol[3] = true; }
             }
 
         }

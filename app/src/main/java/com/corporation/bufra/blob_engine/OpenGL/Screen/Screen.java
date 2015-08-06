@@ -1,9 +1,12 @@
 package com.corporation.bufra.blob_engine.OpenGL.Screen;
 
 
+import com.corporation.bufra.blob_engine.Global.BlobConstants;
 import com.corporation.bufra.blob_engine.OpenGL.Map.Map;
 import com.corporation.bufra.blob_engine.OpenGL.shapes.Rectangle;
 import com.corporation.bufra.blob_engine.OpenGL.shapes.figures.MainFigure;
+
+import java.sql.Blob;
 
 /**
  * Created by Marc on 05.08.2015.
@@ -28,35 +31,29 @@ public class Screen {
     //  ooooooooooooooooooooooooooooooooo
     /* Coordinates of X */
 
-    public float mapCoordinates[] = {
-            0.0f, 0.0f
-    };
-
-    public Screen(){
-
+     public Screen(){
+         //Generate the MainFigure
         mainChar = new MainFigure(0.1f, 0.05f, -0.1f, -0.05f);
+         //Generate the Map
         map = new Map();
 
     }
 
-    private float randomFull(){
-        return ((float)(Math.random()*2 - 1));
-    }
-
-    private float randomFullDistance(){
-        return ((float)(Math.random()/10 ));
-    }
-
     public void renderScreen(float xAng, float yAng){
-
+        //Draw the Character
         mainChar.draw(true);
 
+        //get Rectangles on Screen
         rectangles = map.getRectangles();
-        screenBorderCollision = mainChar.setValues(rectangles, 0.001f * xAng, 0.001f * yAng);
 
-        mainChar.draw(true);
+        //calculate Rectangles on Screen
+        screenBorderCollision = mainChar.setValues(rectangles, xAng * BlobConstants.Magic_Movement_X, yAng * BlobConstants.Magic_Movement_Y);
+
+
+
 
         map.draw(screenBorderCollision, xAng, yAng);
+
 
         screenBorderCollision[0] = false;
         screenBorderCollision[1] = false;
