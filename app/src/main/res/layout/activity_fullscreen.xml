@@ -25,7 +25,7 @@
 
         </LinearLayout>
 
-        <Button
+        Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Engine starten."
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:text="OGL starten"
             android:id="@+id/button"
-            android:layout_gravity="right|bottom" />
+            android:layout_gravity="center_horizontal|bottom" />
     </FrameLayout>
 
 </FrameLayout>

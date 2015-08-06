@@ -23,10 +23,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BlobActivity"
-            android:label="@string/title_activity_blob" >
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_main"
