@@ -44,16 +44,16 @@ public class Map {
         for (Rectangle r : rectangles) {
             r.setValues();
             if(screenBorderCollision[0]  &&!screenBorderCollision[4]){
-                r.setValues(  -0.001f*xVel, 0f);
+                r.setValues(  -BlobConstants.Magic_Movement_X*xVel, 0f);
             }
             if(screenBorderCollision[2]  &&!screenBorderCollision[6]){
-                r.setValues( -0.001f*xVel, 0f);
+                r.setValues( -BlobConstants.Magic_Movement_X*xVel, 0f);
             }
             if(screenBorderCollision[1]  &&!screenBorderCollision[5]){
-                r.setValues( 0f,  -0.001f*yVel);
+                r.setValues( 0f,  -BlobConstants.Magic_Movement_Y*yVel);
             }
             if(screenBorderCollision[3]  &&!screenBorderCollision[7]){
-                r.setValues( 0f,  -0.001f*yVel);
+                r.setValues( 0f,  -BlobConstants.Magic_Movement_Y*yVel);
             }
         }
 

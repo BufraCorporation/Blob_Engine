@@ -15,10 +15,6 @@ public class Triangle extends Shape {
 
     private FloatBuffer vertexBuffer;
 
-    public float[] getVerticles() {
-        return verticles;
-    }
-
     private float verticles[] = {
              -0.3f,  0.0f, 0.0f,
               0.3f,  0.0f, 0.0f,
@@ -65,6 +61,20 @@ public class Triangle extends Shape {
        renderRectangle();
     }
 
+    public void setValues( float x2, float y2){
+        //Update x Values
+            verticles[BlobConstants.T_COORDINATE1_X] -= x2;
+            verticles[BlobConstants.T_COORDINATE2_X] -= x2;
+            verticles[BlobConstants.T_COORDINATE3_X] -= x2;
+
+        //Update y Values
+            verticles[BlobConstants.T_COORDINATE1_Y] -= y2;
+            verticles[BlobConstants.T_COORDINATE2_Y] -= y2;
+            verticles[BlobConstants.T_COORDINATE3_Y] -= y2;
+
+        resizeRectangle();
+    }
+
     public void draw(){
         GLES20.glUseProgram(shaderProgram);
 
@@ -78,21 +88,6 @@ public class Triangle extends Shape {
         GLES20.glUniform4fv(colorUniform, 1, color, 0);
         GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, verticles.length / 3);
         GLES20.glDisableVertexAttribArray(positionAttrib);
-    }
-
-
-    public void setValues( float x2, float y2){
-        //Update x Values
-            verticles[BlobConstants.T_COORDINATE1_X] -= x2;
-            verticles[BlobConstants.T_COORDINATE2_X] -= x2;
-            verticles[BlobConstants.T_COORDINATE3_X] -= x2;
-
-        //Update y Values
-            verticles[BlobConstants.T_COORDINATE1_Y] -= y2;
-            verticles[BlobConstants.T_COORDINATE2_Y] -= y2;
-            verticles[BlobConstants.T_COORDINATE3_Y] -= y2;
-
-        resizeRectangle();
     }
 
     public void setValues(){

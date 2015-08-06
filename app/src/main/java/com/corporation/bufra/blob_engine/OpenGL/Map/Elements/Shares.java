@@ -13,6 +13,14 @@ public class Shares extends Rectangle {
         super(x1, x2, x1 + BlobConstants.SHARE_HEIGHT, x2 + BlobConstants.SHARE_LENGTH);
     }
 
+    private float randomFull(){
+        return ((float)(Math.random()*5 - 1));
+    }
+
+    private float randomFullDistance(){
+        return ((float)(Math.random()/2 ));
+    }
+
     public void draw(boolean screenBorderCollision[], float xVel, float yVel) {
 
     }

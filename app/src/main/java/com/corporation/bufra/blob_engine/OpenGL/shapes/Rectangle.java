@@ -36,8 +36,6 @@ public class Rectangle extends Shape {
             verticles[BlobConstants.R_COORDINATE1_Y] = y2;
             verticles[BlobConstants.R_COORDINATE2_Y] = x2;
         }
-     //   screenCoordinates[0] = verticles[BlobConstants.R_COORDINATE1_X];
-
         createTriangles();
     }
 
