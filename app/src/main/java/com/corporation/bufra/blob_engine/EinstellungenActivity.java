@@ -43,10 +43,10 @@ public class EinstellungenActivity extends PreferenceActivity implements Prefere
                 MainActivity.getRenderer().setColor(0.5f, 0.0f, 0.0f, 1.0f);
                 break;
             case 2: //Grün
-                MainActivity.getRenderer().setColor(0.0f, 0.5f, 0.0f, 1.0f);
+                MainActivity.getRenderer().setColor(0.27f, 1.0f, 0.27f, 1.0f);
                 break;
             case 3: //Blau
-                MainActivity.getRenderer().setColor(0.0f, 0.0f, 0.5f, 1.0f);
+                MainActivity.getRenderer().setColor(0.27f, 0.47f, 1.0f, 1.0f);
                 break;
             case 4: //Kackbraun
                 MainActivity.getRenderer().setColor(0.36f, 0.15f, 0.0f, 1.0f);
