@@ -21,7 +21,7 @@ public class Triangle extends Shape {
               0.0f,  0.3f, 0.0f
     };
 
-    static private float color[] = new float[] { 0.0f, 1.0f, 1.0f, 0.5f};
+    static private float color[] = new float[] {0.0f, 1.0f, 1.0f, 0.5f};
 
     private final String vertexShaderCode =
             "attribute vec4 vPosition;" +
@@ -36,6 +36,15 @@ public class Triangle extends Shape {
             "}";
     private int shaderProgram;
 
+    //setColor:
+    public static void setColor(float red, float green, float blue, float alpha){
+        color[0] = red;
+        color[1] = green;
+        color[2] = blue;
+        color[3] = alpha;
+    }
+
+    //Shader:
     public static int loadShader(int type, String shaderCode) {
         int shader = GLES20.glCreateShader(type);
         GLES20.glShaderSource(shader, shaderCode);

@@ -63,10 +63,15 @@ public class EinstellungenActivity extends PreferenceActivity implements Prefere
                 break;
 
             //Rectanglefarbe:
-            case 10:
-            //88, 50, 95 - Blasengummi
-            //55, 95, 30 - Frühling
-            //55, 50, 95 - Orchidee
+            case 10: //88, 50, 95 - Blasengummi
+                Triangle.setColor(0.88f, 0.5f,0.95f, 1.0f);
+                break;
+            case 11: //55, 95, 30 - Frühling
+                Triangle.setColor(0.55f, 0.95f, 0.3f, 1.0f);
+                break;
+            case 12: //55, 50, 95 - Orchidee
+                Triangle.setColor(0.55f, 0.5f, 0.95f, 1.0f);
+                break;
         }
 
         return true;
